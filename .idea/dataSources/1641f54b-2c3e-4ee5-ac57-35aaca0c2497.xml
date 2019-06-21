@@ -8,7 +8,7 @@
       <ObjectId>16537</ObjectId>
       <StateNumber>629</StateNumber>
       <Owner>kriss</Owner>
-      <IntrospectionStateNumber>685</IntrospectionStateNumber>
+      <IntrospectionStateNumber>701</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16538|16540|1
@@ -19,69 +19,62 @@ sequence|table|16585|16587|1
 sequence|table|16596|16598|1
 sequence|table|16646|16648|1
 sequence|table|16654|16656|1
+sequence|table|24576|24578|1
 </Relations>
     </database>
-    <database id="3" parent="1" name="keepitclean">
-      <ObjectId>16394</ObjectId>
-      <StateNumber>572</StateNumber>
-      <Owner>kriss</Owner>
-    </database>
-    <database id="4" parent="1" name="postgres">
+    <database id="3" parent="1" name="postgres">
       <ObjectId>13012</ObjectId>
       <Comment>default administrative connection database</Comment>
       <StateNumber>567</StateNumber>
       <Owner>postgres</Owner>
     </database>
-    <role id="5" parent="1" name="kriss">
+    <role id="4" parent="1" name="kriss">
       <ObjectId>16393</ObjectId>
-      <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
-      <CreateRole>1</CreateRole>
-      <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="6" parent="1" name="pg_execute_server_program">
+    <role id="5" parent="1" name="pg_execute_server_program">
       <ObjectId>4571</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="7" parent="1" name="pg_monitor">
+    <role id="6" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="8" parent="1" name="pg_read_all_settings">
+    <role id="7" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="9" parent="1" name="pg_read_all_stats">
+    <role id="8" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="10" parent="1" name="pg_read_server_files">
+    <role id="9" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="11" parent="1" name="pg_signal_backend">
+    <role id="10" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="12" parent="1" name="pg_stat_scan_tables">
+    <role id="11" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="13" parent="1" name="pg_write_server_files">
+    <role id="12" parent="1" name="pg_write_server_files">
       <ObjectId>4570</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="14" parent="1" name="postgres">
+    <role id="13" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -92,43 +85,43 @@ sequence|table|16654|16656|1
       <Replication>1</Replication>
       <BypassRls>1</BypassRls>
     </role>
-    <schema id="15" parent="2" name="information_schema">
+    <schema id="14" parent="2" name="information_schema">
       <ObjectId>12716</ObjectId>
       <StateNumber>366</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="16" parent="2" name="pg_catalog">
+    <schema id="15" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="17" parent="2" name="pg_temp_1">
+    <schema id="16" parent="2" name="pg_temp_1">
       <ObjectId>11804</ObjectId>
       <StateNumber>121</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="18" parent="2" name="pg_toast">
+    <schema id="17" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
       <Comment>reserved schema for TOAST tables</Comment>
       <StateNumber>1</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="19" parent="2" name="pg_toast_temp_1">
+    <schema id="18" parent="2" name="pg_toast_temp_1">
       <ObjectId>11805</ObjectId>
       <StateNumber>121</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="20" parent="2" name="public">
+    <schema id="19" parent="2" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>686</IntrospectionStateNumber>
+      <IntrospectionStateNumber>702</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <access-method id="21" parent="2" name="btree">
+    <access-method id="20" parent="2" name="btree">
       <ObjectId>403</ObjectId>
       <Comment>b-tree index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -136,7 +129,7 @@ sequence|table|16654|16656|1
       <HandlerId>330</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="22" parent="2" name="hash">
+    <access-method id="21" parent="2" name="hash">
       <ObjectId>405</ObjectId>
       <Comment>hash index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -144,7 +137,7 @@ sequence|table|16654|16656|1
       <HandlerId>331</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="23" parent="2" name="gist">
+    <access-method id="22" parent="2" name="gist">
       <ObjectId>783</ObjectId>
       <Comment>GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -152,7 +145,7 @@ sequence|table|16654|16656|1
       <HandlerId>332</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="24" parent="2" name="gin">
+    <access-method id="23" parent="2" name="gin">
       <ObjectId>2742</ObjectId>
       <Comment>GIN index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -160,7 +153,7 @@ sequence|table|16654|16656|1
       <HandlerId>333</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="25" parent="2" name="spgist">
+    <access-method id="24" parent="2" name="spgist">
       <ObjectId>4000</ObjectId>
       <Comment>SP-GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -168,7 +161,7 @@ sequence|table|16654|16656|1
       <HandlerId>334</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="26" parent="2" name="brin">
+    <access-method id="25" parent="2" name="brin">
       <ObjectId>3580</ObjectId>
       <Comment>block range index (BRIN) access method</Comment>
       <StateNumber>1</StateNumber>
@@ -176,7 +169,7 @@ sequence|table|16654|16656|1
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <extension id="27" parent="2" name="plpgsql">
+    <extension id="26" parent="2" name="plpgsql">
       <ObjectId>12998</ObjectId>
       <Comment>PL/pgSQL procedural language</Comment>
       <StateNumber>519</StateNumber>
@@ -184,7 +177,7 @@ sequence|table|16654|16656|1
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
-    <sequence id="28" parent="20" name="author_book_id_seq">
+    <sequence id="27" parent="19" name="author_book_id_seq">
       <ObjectId>16646</ObjectId>
       <StateNumber>675</StateNumber>
       <Owner>kriss</Owner>
@@ -192,7 +185,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="29" parent="20" name="authors_id_seq">
+    <sequence id="28" parent="19" name="authors_id_seq">
       <ObjectId>16585</ObjectId>
       <StateNumber>639</StateNumber>
       <Owner>kriss</Owner>
@@ -200,7 +193,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="30" parent="20" name="book_genre_id_seq">
+    <sequence id="29" parent="19" name="book_genre_id_seq">
       <ObjectId>16654</ObjectId>
       <StateNumber>677</StateNumber>
       <Owner>kriss</Owner>
@@ -208,7 +201,15 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="31" parent="20" name="books_id_seq">
+    <sequence id="30" parent="19" name="book_user_id_seq">
+      <ObjectId>24576</ObjectId>
+      <StateNumber>695</StateNumber>
+      <Owner>kriss</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="31" parent="19" name="books_id_seq">
       <ObjectId>16577</ObjectId>
       <StateNumber>637</StateNumber>
       <Owner>kriss</Owner>
@@ -216,7 +217,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="32" parent="20" name="genres_id_seq">
+    <sequence id="32" parent="19" name="genres_id_seq">
       <ObjectId>16566</ObjectId>
       <StateNumber>635</StateNumber>
       <Owner>kriss</Owner>
@@ -224,7 +225,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="33" parent="20" name="migrations_id_seq">
+    <sequence id="33" parent="19" name="migrations_id_seq">
       <ObjectId>16538</ObjectId>
       <StateNumber>630</StateNumber>
       <Owner>kriss</Owner>
@@ -232,7 +233,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="34" parent="20" name="publishers_id_seq">
+    <sequence id="34" parent="19" name="publishers_id_seq">
       <ObjectId>16596</ObjectId>
       <StateNumber>641</StateNumber>
       <Owner>kriss</Owner>
@@ -240,7 +241,7 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="35" parent="20" name="users_id_seq">
+    <sequence id="35" parent="19" name="users_id_seq">
       <ObjectId>16546</ObjectId>
       <StateNumber>631</StateNumber>
       <Owner>kriss</Owner>
@@ -248,52 +249,57 @@ sequence|table|16654|16656|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="36" parent="20" name="author_book">
+    <table id="36" parent="19" name="author_book">
       <ObjectId>16648</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>675</StateNumber>
     </table>
-    <table id="37" parent="20" name="authors">
+    <table id="37" parent="19" name="authors">
       <ObjectId>16587</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>639</StateNumber>
     </table>
-    <table id="38" parent="20" name="book_genre">
+    <table id="38" parent="19" name="book_genre">
       <ObjectId>16656</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>677</StateNumber>
     </table>
-    <table id="39" parent="20" name="books">
+    <table id="39" parent="19" name="book_user">
+      <ObjectId>24578</ObjectId>
+      <Owner>kriss</Owner>
+      <StateNumber>699</StateNumber>
+    </table>
+    <table id="40" parent="19" name="books">
       <ObjectId>16579</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>680</StateNumber>
     </table>
-    <table id="40" parent="20" name="genres">
+    <table id="41" parent="19" name="genres">
       <ObjectId>16568</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>635</StateNumber>
     </table>
-    <table id="41" parent="20" name="migrations">
+    <table id="42" parent="19" name="migrations">
       <ObjectId>16540</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>630</StateNumber>
     </table>
-    <table id="42" parent="20" name="password_resets">
+    <table id="43" parent="19" name="password_resets">
       <ObjectId>16559</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>633</StateNumber>
     </table>
-    <table id="43" parent="20" name="publishers">
+    <table id="44" parent="19" name="publishers">
       <ObjectId>16598</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>641</StateNumber>
     </table>
-    <table id="44" parent="20" name="users">
+    <table id="45" parent="19" name="users">
       <ObjectId>16548</ObjectId>
       <Owner>kriss</Owner>
       <StateNumber>631</StateNumber>
     </table>
-    <column id="45" parent="36" name="id">
+    <column id="46" parent="36" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -301,35 +307,35 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;author_book_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="46" parent="36" name="author_id">
+    <column id="47" parent="36" name="author_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>675</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="47" parent="36" name="book_id">
+    <column id="48" parent="36" name="book_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>675</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="48" parent="36" name="author_book_pkey">
+    <index id="49" parent="36" name="author_book_pkey">
       <ObjectId>16652</ObjectId>
       <StateNumber>675</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="49" parent="36" name="author_book_pkey">
+    <key id="50" parent="36" name="author_book_pkey">
       <ObjectId>16653</ObjectId>
       <StateNumber>675</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>author_book_pkey</UnderlyingIndexName>
     </key>
-    <column id="50" parent="37" name="id">
+    <column id="51" parent="37" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -337,53 +343,53 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;authors_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="51" parent="37" name="first_name">
+    <column id="52" parent="37" name="first_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>639</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="52" parent="37" name="middle_name">
+    <column id="53" parent="37" name="middle_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>639</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="53" parent="37" name="last_name">
+    <column id="54" parent="37" name="last_name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>639</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="54" parent="37" name="created_at">
+    <column id="55" parent="37" name="created_at">
       <Position>5</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>639</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="55" parent="37" name="updated_at">
+    <column id="56" parent="37" name="updated_at">
       <Position>6</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>639</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="56" parent="37" name="authors_pkey">
+    <index id="57" parent="37" name="authors_pkey">
       <ObjectId>16594</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="57" parent="37" name="authors_pkey">
+    <key id="58" parent="37" name="authors_pkey">
       <ObjectId>16595</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>authors_pkey</UnderlyingIndexName>
     </key>
-    <column id="58" parent="38" name="id">
+    <column id="59" parent="38" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -391,35 +397,79 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;book_genre_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="59" parent="38" name="book_id">
+    <column id="60" parent="38" name="book_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>677</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="60" parent="38" name="genre_id">
+    <column id="61" parent="38" name="genre_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>677</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="61" parent="38" name="book_genre_pkey">
+    <index id="62" parent="38" name="book_genre_pkey">
       <ObjectId>16660</ObjectId>
       <StateNumber>677</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="62" parent="38" name="book_genre_pkey">
+    <key id="63" parent="38" name="book_genre_pkey">
       <ObjectId>16661</ObjectId>
       <StateNumber>677</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>book_genre_pkey</UnderlyingIndexName>
     </key>
-    <column id="63" parent="39" name="id">
+    <column id="64" parent="39" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>695</StateNumber>
+      <DefaultExpression>nextval(&apos;book_user_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="65" parent="39" name="book_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>695</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="66" parent="39" name="user_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>695</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="67" parent="39" name="possession">
+      <Position>4</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>699</StateNumber>
+      <DefaultExpression>true</DefaultExpression>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="68" parent="39" name="book_user_pkey">
+      <ObjectId>24582</ObjectId>
+      <StateNumber>695</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="69" parent="39" name="book_user_pkey">
+      <ObjectId>24583</ObjectId>
+      <StateNumber>695</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>book_user_pkey</UnderlyingIndexName>
+    </key>
+    <column id="70" parent="40" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -427,65 +477,65 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;books_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="64" parent="39" name="isbn">
+    <column id="71" parent="40" name="isbn">
       <Position>2</Position>
       <DataType>varchar(13)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>637</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="39" name="title">
+    <column id="72" parent="40" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>637</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="66" parent="39" name="edition">
+    <column id="73" parent="40" name="edition">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>637</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="67" parent="39" name="price">
+    <column id="74" parent="40" name="price">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>637</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="68" parent="39" name="created_at">
+    <column id="75" parent="40" name="created_at">
       <Position>6</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>637</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="69" parent="39" name="updated_at">
+    <column id="76" parent="40" name="updated_at">
       <Position>7</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>637</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="70" parent="39" name="publisher_id">
+    <column id="77" parent="40" name="publisher_id">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>680</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="71" parent="39" name="books_pkey">
+    <index id="78" parent="40" name="books_pkey">
       <ObjectId>16583</ObjectId>
       <StateNumber>637</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="72" parent="39" name="books_pkey">
+    <key id="79" parent="40" name="books_pkey">
       <ObjectId>16584</ObjectId>
       <StateNumber>637</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>books_pkey</UnderlyingIndexName>
     </key>
-    <column id="73" parent="40" name="id">
+    <column id="80" parent="41" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -493,46 +543,46 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;genres_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="74" parent="40" name="title">
+    <column id="81" parent="41" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>635</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="75" parent="40" name="description">
+    <column id="82" parent="41" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>635</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="76" parent="40" name="created_at">
+    <column id="83" parent="41" name="created_at">
       <Position>4</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>635</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="77" parent="40" name="updated_at">
+    <column id="84" parent="41" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>635</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="78" parent="40" name="genres_pkey">
+    <index id="85" parent="41" name="genres_pkey">
       <ObjectId>16575</ObjectId>
       <StateNumber>635</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="79" parent="40" name="genres_pkey">
+    <key id="86" parent="41" name="genres_pkey">
       <ObjectId>16576</ObjectId>
       <StateNumber>635</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>genres_pkey</UnderlyingIndexName>
     </key>
-    <column id="80" parent="41" name="id">
+    <column id="87" parent="42" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -540,60 +590,60 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;migrations_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="81" parent="41" name="migration">
+    <column id="88" parent="42" name="migration">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>630</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="82" parent="41" name="batch">
+    <column id="89" parent="42" name="batch">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>630</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="83" parent="41" name="migrations_pkey">
+    <index id="90" parent="42" name="migrations_pkey">
       <ObjectId>16544</ObjectId>
       <StateNumber>630</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="84" parent="41" name="migrations_pkey">
+    <key id="91" parent="42" name="migrations_pkey">
       <ObjectId>16545</ObjectId>
       <StateNumber>630</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>migrations_pkey</UnderlyingIndexName>
     </key>
-    <column id="85" parent="42" name="email">
+    <column id="92" parent="43" name="email">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>633</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="86" parent="42" name="token">
+    <column id="93" parent="43" name="token">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>633</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="87" parent="42" name="created_at">
+    <column id="94" parent="43" name="created_at">
       <Position>3</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>633</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="88" parent="42" name="password_resets_email_index">
+    <index id="95" parent="43" name="password_resets_email_index">
       <ObjectId>16565</ObjectId>
       <StateNumber>633</StateNumber>
       <ColNames>email</ColNames>
     </index>
-    <column id="89" parent="43" name="id">
+    <column id="96" parent="44" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -601,64 +651,64 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;publishers_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="90" parent="43" name="name">
+    <column id="97" parent="44" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>641</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="91" parent="43" name="street_address">
+    <column id="98" parent="44" name="street_address">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="92" parent="43" name="city">
+    <column id="99" parent="44" name="city">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="93" parent="43" name="district">
+    <column id="100" parent="44" name="district">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="94" parent="43" name="phone_number">
+    <column id="101" parent="44" name="phone_number">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="95" parent="43" name="created_at">
+    <column id="102" parent="44" name="created_at">
       <Position>7</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="96" parent="43" name="updated_at">
+    <column id="103" parent="44" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>641</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="97" parent="43" name="publishers_pkey">
+    <index id="104" parent="44" name="publishers_pkey">
       <ObjectId>16605</ObjectId>
       <StateNumber>641</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="98" parent="43" name="publishers_pkey">
+    <key id="105" parent="44" name="publishers_pkey">
       <ObjectId>16606</ObjectId>
       <StateNumber>641</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>publishers_pkey</UnderlyingIndexName>
     </key>
-    <column id="99" parent="44" name="id">
+    <column id="106" parent="45" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -666,72 +716,72 @@ sequence|table|16654|16656|1
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="100" parent="44" name="name">
+    <column id="107" parent="45" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>631</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="101" parent="44" name="email">
+    <column id="108" parent="45" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>631</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="102" parent="44" name="email_verified_at">
+    <column id="109" parent="45" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>631</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="103" parent="44" name="password">
+    <column id="110" parent="45" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>631</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="104" parent="44" name="remember_token">
+    <column id="111" parent="45" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <StateNumber>631</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="105" parent="44" name="created_at">
+    <column id="112" parent="45" name="created_at">
       <Position>7</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>631</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="106" parent="44" name="updated_at">
+    <column id="113" parent="45" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>631</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="107" parent="44" name="users_pkey">
+    <index id="114" parent="45" name="users_pkey">
       <ObjectId>16555</ObjectId>
       <StateNumber>631</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="108" parent="44" name="users_email_unique">
+    <index id="115" parent="45" name="users_email_unique">
       <ObjectId>16557</ObjectId>
       <StateNumber>631</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="109" parent="44" name="users_pkey">
+    <key id="116" parent="45" name="users_pkey">
       <ObjectId>16556</ObjectId>
       <StateNumber>631</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <key id="110" parent="44" name="users_email_unique">
+    <key id="117" parent="45" name="users_email_unique">
       <ObjectId>16558</ObjectId>
       <StateNumber>631</StateNumber>
       <ColNames>email</ColNames>

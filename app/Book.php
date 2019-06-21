@@ -15,6 +15,10 @@ class Book extends Model
         return $this->belongsToMany('App\Author');
     }
 
+    public function users() {
+        return $this->belongsToMany('App\User');
+    }
+
     public function publisher() {
         return $this->belongsTo('App\Publisher');
     }
