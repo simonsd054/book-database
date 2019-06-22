@@ -15,7 +15,7 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('isbn', 13);
+            $table->string('isbn', 13)->unique();
             $table->string('title');
             $table->unsignedInteger('edition')->nullable();
             $table->unsignedInteger('price')->nullable();
