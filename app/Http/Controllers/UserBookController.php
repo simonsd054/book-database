@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class UserBookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('books.index');
+        return view('users.index');
     }
 
     /**
