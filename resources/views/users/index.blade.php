@@ -2,13 +2,20 @@
 
 @section('content')
     <div class="container">
-        <h3>Total Books</h3>
+        <h3>My Books</h3>
         <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            @foreach($books as $book)
+                <li class="list-group-item"><a href="">{{ $book }}</a></li>
+            @endforeach
         </ul>
+        <div style="padding-top: 10px;"></div>
+        <add-my-book csrf="{{ csrf_token() }}"></add-my-book>
     </div>
 @endsection
+
+<script>
+    import AddMyBook from "../../js/components/AddMyBook";
+    export default {
+        components: {AddMyBook}
+    }
+</script>

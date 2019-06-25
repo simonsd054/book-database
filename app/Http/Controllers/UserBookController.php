@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
 
 class UserBookController extends Controller
@@ -13,7 +14,8 @@ class UserBookController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $books = auth()->user()->books;
+        return view('users.index', compact('books'));
     }
 
     /**
@@ -23,7 +25,7 @@ class UserBookController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class UserBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd(\request());
+        $attributes = \request()->validate([
+            'title' => 'required',
+
+            'isbn' => 'required',
+            'title' => 'required',
+            'edition' => 'required',
+            'price' => 'required',
+            'publisher_id' => 'required'
+        ]);
+        dd($attributes);
+        Book::create($attributes);
+        return redirect('/userbooks');
     }
 
     /**
