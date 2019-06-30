@@ -16,7 +16,7 @@
                 <button type="submit" class="btn btn-primary">Add</button>
                 <button class="btn btn-primary" @click="isVisible = false">Cancel</button>
             </form>
-            <add-book condition="If the book is not listed above" :csrf="csrf"></add-book>
+            <add-book condition="If the book is not listed above" :csrf="csrf" :old="old"></add-book>
         </div>
     </div>
 </template>
@@ -24,7 +24,7 @@
 <script>
     export default {
         name: "AddMyBook",
-        props:['csrf'],
+        props:['csrf', 'old'],
         data() {
             return {
                 isVisible: false

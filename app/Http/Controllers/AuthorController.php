@@ -34,7 +34,7 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dump($request);
     }
 
     /**

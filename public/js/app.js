@@ -1762,13 +1762,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddComponent",
-  props: ['csrf', 'condition'],
+  props: ['csrf', 'condition', 'old'],
   data: function data() {
     return {
-      isVisible: false
+      isVisible: false,
+      myData: []
     };
+  },
+  methods: {
+    onSubmitAuthor: function onSubmitAuthor() {
+      var _this = this;
+
+      console.log('done');
+      $('#authorModal').modal('toggle'); // $('#authorButton').prop('disabled', true);
+
+      $(document).on("submit", 'form#author', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var form = $(_this);
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "authors",
+          cache: false,
+          data: form.serialize()
+        }).done(function (response) {
+          console.log('hello');
+
+          _this.myData.push('hello');
+
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    },
+    onSubmitGenre: function onSubmitGenre() {
+      var _this2 = this;
+
+      console.log('done');
+      $('#genreModal').modal('toggle');
+      $('#genreButton').prop('disabled', true);
+      $(document).on("submit", 'form#genre', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var form = $(_this2);
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "genre",
+          cache: false,
+          data: form.serialize()
+        }).done(function (response) {
+          console.log('hello');
+
+          _this2.myData.push('hello');
+
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    }
   }
 });
 
@@ -1878,7 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddMyBook",
-  props: ['csrf'],
+  props: ['csrf', 'old'],
   data: function data() {
     return {
       isVisible: false
@@ -37201,46 +37335,203 @@ var render = function() {
     _c("div", { staticStyle: { "padding-top": "10px" } }),
     _vm._v(" "),
     _vm.isVisible
-      ? _c("form", { attrs: { action: "/userbooks", method: "post" } }, [
-          _c("input", {
-            attrs: { type: "hidden", name: "_token" },
-            domProps: { value: _vm.csrf }
-          }),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _vm._m(4),
-          _vm._v(" "),
-          _vm._m(5),
-          _vm._v(" "),
-          _vm._m(6),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Add")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              on: {
-                click: function($event) {
-                  _vm.isVisible = false
+      ? _c(
+          "form",
+          { attrs: { id: "mainForm", action: "/userbooks", method: "post" } },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf }
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "InputAuthor" } }, [
+                _vm._v("Author")
+              ]),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v("\n            " + _vm._s(_vm.myData) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [_vm._v("Add")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                on: {
+                  click: function($event) {
+                    _vm.isVisible = false
+                  }
                 }
-              }
-            },
-            [_vm._v("Cancel")]
-          )
-        ])
-      : _vm._e()
+              },
+              [_vm._v("Cancel")]
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "authorModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "authorModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "author" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitAuthor($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      attrs: { type: "hidden", name: "_token" },
+                      domProps: { value: _vm.csrf }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "authorButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "genreModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "genreModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(11),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "genre" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitGenre($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      attrs: { type: "hidden", name: "_token" },
+                      domProps: { value: _vm.csrf }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "genreButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -37292,13 +37583,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "InputAuthor" } }, [_vm._v("Author")]),
-      _vm._v(" "),
+    return _c("div", [
       _c("input", {
         staticClass: "form-control",
         attrs: { name: "author", id: "InputAuthor", placeholder: "Author" }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#authorModal"
+          }
+        },
+        [_vm._v("Add\n                ")]
+      )
     ])
   },
   function() {
@@ -37306,12 +37608,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "InputGenre" } }, [_vm._v("Edition")]),
+      _c("label", { attrs: { for: "InputGenre" } }, [_vm._v("Genre")]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
         attrs: { name: "genre", id: "InputGenre", placeholder: "Genre" }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#genreModal"
+          }
+        },
+        [_vm._v("Add\n            ")]
+      )
     ])
   },
   function() {
@@ -37342,6 +37657,147 @@ var staticRenderFns = [
           name: "publisher_id",
           id: "InputPublisher_id",
           placeholder: "Publisher ID"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "authorModalLabel" } },
+        [_vm._v("Add Author")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputFirstName" } }, [_vm._v("First Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "firstName",
+          id: "InputFirstName",
+          placeholder: "Enter First Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputMiddleName" } }, [
+        _vm._v("Middle Name")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "middleName",
+          id: "InputMiddleName",
+          placeholder: "Enter Middle Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputLastName" } }, [_vm._v("Last Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "lastName",
+          id: "InputLastName",
+          placeholder: "Enter Last Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "genreModalLabel" } },
+        [_vm._v("Add Genre")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputGenreTitle" } }, [
+        _vm._v("Genre Title")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "genreTitle",
+          id: "InputGenreTitle",
+          placeholder: "Enter Genre Title"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputGenreDescription" } }, [
+        _vm._v("Genre Description")
+      ]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name: "genreDescription",
+          id: "InputGenreDescription",
+          placeholder: "Enter Genre Description"
         }
       })
     ])
@@ -37533,7 +37989,8 @@ var render = function() {
             _c("add-book", {
               attrs: {
                 condition: "If the book is not listed above",
-                csrf: _vm.csrf
+                csrf: _vm.csrf,
+                old: _vm.old
               }
             })
           ],

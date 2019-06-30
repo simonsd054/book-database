@@ -9,7 +9,7 @@
             @endforeach
         </ul>
         <div style="padding-top: 10px;"></div>
-        <add-my-book csrf="{{ csrf_token() }}"></add-my-book>
+        <add-my-book csrf="{{ csrf_token() }}" old="{{old('firstName')}}"></add-my-book>
     </div>
 @endsection
 
