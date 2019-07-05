@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Publisher;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
@@ -34,7 +35,17 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name'=>'required',
+            'street_address'=>'required',
+            'city'=>'required',
+            'district'=>'required',
+            'phone_number'=>'required',
+
+        ]);
+        Publisher::create($attributes);
+        $publisher = Publisher::latest()->first();
+        return response()->json($publisher);
     }
 
     /**

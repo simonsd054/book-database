@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function books() {
-        return $this->belongsToMany('App\Book');
+        return $this->belongsToMany('App\Book')->withPivot('id');
     }
 }

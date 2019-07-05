@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Genre;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -34,7 +35,13 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'title'=>'required',
+            'description'=>'required'
+        ]);
+        Genre::create($attributes);
+        $genre = Genre::latest()->first();
+        return response()->json($genre);
     }
 
     /**

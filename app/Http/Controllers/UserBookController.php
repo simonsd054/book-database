@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Book;
+use App\Genre;
+use App\Publisher;
+use function foo\func;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserBookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,11 @@ class UserBookController extends Controller
     public function index()
     {
         $books = auth()->user()->books;
-        return view('users.index', compact('books'));
+        $allbooks = Book::all();
+        $authors = Author::all();
+        $genres = Genre::all();
+        $publishers = Publisher::all();
+        return view('users.index', compact('books', 'authors', 'genres', 'publishers', 'allbooks'));
     }
 
     /**
@@ -25,7 +39,6 @@ class UserBookController extends Controller
      */
     public function create()
     {
-        return view('users.create');
     }
 
     /**
@@ -38,17 +51,26 @@ class UserBookController extends Controller
     {
 //        dd(\request());
         $attributes = \request()->validate([
-            'title' => 'required',
-
             'isbn' => 'required',
             'title' => 'required',
             'edition' => 'required',
+            'genre'=>'required',
+            'author'=>'required',
             'price' => 'required',
-            'publisher_id' => 'required'
+            'publisher_id'=>'required',
         ]);
-        dd($attributes);
-        Book::create($attributes);
-        return redirect('/userbooks');
+//        dd($attributes);
+        $id = Auth::id();
+        $attributes = \array_diff_key($attributes, ['genre'=>'xy', 'author'=>'xy']);
+//        dd($attributes);
+        $book = Book::create($attributes);
+        $book->genres()->attach(\request()->only(['genre']));
+        $book->authors()->attach(\request()->only(['author']));
+        $book->users()->attach($id);
+//        $books = auth()->user()->books;
+//        dd($books);
+        $books = auth()->user()->books;
+        return redirect('/userbooks')->with(['books' => $books]);
     }
 
     /**
@@ -59,7 +81,8 @@ class UserBookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = Book::findOrfail($id);
+        return view('users.show', compact('book'));
     }
 
     /**
@@ -70,7 +93,33 @@ class UserBookController extends Controller
      */
     public function edit($id)
     {
-        //
+        global $book;
+        $book = Book::findOrfail($id);
+        $book->author = $book->authors[0];
+        $book->genre = $book->genres[0];
+        $authors = Author::all();
+        $genres = Genre::all();
+        $publishers = Publisher::all();
+        $akey = $authors->search(function($item) {
+            global $book;
+            return $item->id == $book->author->id;
+        });
+        $authors->forget($akey);
+        $authors = $authors->values();
+        $gkey = $genres->search(function($item) {
+            global $book;
+            return $item->id == $book->genre->id;
+        });
+        $genres->forget($gkey);
+        $genres = $genres->values();
+        $pkey = $publishers->search(function($item) {
+            global $book;
+            return $item->id == $book->publisher_id;
+        });
+        $publishers->forget($pkey);
+        $publishers = $publishers->values();
+        $prevPublisher = Publisher::findOrfail($book->publisher_id);
+        return view('users.edit', compact('book','authors', 'genres', 'publishers', 'prevPublisher'));
     }
 
     /**
@@ -82,7 +131,22 @@ class UserBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = \request()->validate([
+            'isbn' => 'required',
+            'title' => 'required',
+            'edition' => 'required',
+            'genre'=>'required',
+            'author'=>'required',
+            'price' => 'required',
+            'publisher_id'=>'required',
+        ]);
+        $id = Auth::id();
+        $attributes = \array_diff_key($attributes, ['genre'=>'xy', 'author'=>'xy']);
+        $book = Book::findOrfail($id);
+        $book->update($attributes);
+        $book->genres()->sync(\request()->only(['genre']), false);
+        $book->authors()->sync(\request()->only(['author']), false);
+        return redirect('/userbooks');
     }
 
     /**
@@ -93,6 +157,8 @@ class UserBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::findOrfail($id);
+        $book->delete();
+        return redirect('/userbooks');
     }
 }

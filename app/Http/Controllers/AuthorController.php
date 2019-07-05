@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -34,7 +35,14 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request);
+        $attributes = request()->validate([
+            'first_name'=>'required',
+            'last_name'=>'required'
+        ]);
+        $attributes['middle_name'] = $request->get('middle_name');
+        Author::create($attributes);
+        $author= Author::latest()->first();
+        return response()->json($author);
     }
 
     /**

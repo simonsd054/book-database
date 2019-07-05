@@ -1835,13 +1835,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddComponent",
-  props: ['csrf', 'condition', 'old'],
+  props: ['csrf', 'condition', 'old', 'authors', 'genres', 'publishers'],
   data: function data() {
     return {
       isVisible: false,
-      myData: []
+      myData: [],
+      authors1: this.authors,
+      genres1: this.genres,
+      publishers1: this.publishers
     };
   },
   methods: {
@@ -1853,7 +1912,11 @@ __webpack_require__.r(__webpack_exports__);
 
       $(document).on("submit", 'form#author', function (e) {
         // e.preventDefault(); //Prevent page from submitting
-        var form = $(_this);
+        var formData = {
+          'first_name': $('input[name=firstName]').val(),
+          'middle_name': $('input[name=middleName]').val(),
+          'last_name': $('input[name=lastName]').val()
+        };
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1862,12 +1925,9 @@ __webpack_require__.r(__webpack_exports__);
         $.ajax({
           type: "POST",
           url: "authors",
-          cache: false,
-          data: form.serialize()
+          data: formData
         }).done(function (response) {
-          console.log('hello');
-
-          _this.myData.push('hello');
+          _this.authors1.push(response);
 
           return false;
         });
@@ -1878,11 +1938,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       console.log('done');
-      $('#genreModal').modal('toggle');
-      $('#genreButton').prop('disabled', true);
+      $('#genreModal').modal('toggle'); // $('#genreButton').prop('disabled', true);
+
       $(document).on("submit", 'form#genre', function (e) {
         // e.preventDefault(); //Prevent page from submitting
-        var form = $(_this2);
+        var formData = {
+          'title': $('input[name=genreTitle]').val(),
+          'description': $('textarea[name=genreDescription]').val()
+        };
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1890,13 +1953,42 @@ __webpack_require__.r(__webpack_exports__);
         });
         $.ajax({
           type: "POST",
-          url: "genre",
-          cache: false,
-          data: form.serialize()
+          url: "genres",
+          data: formData
         }).done(function (response) {
-          console.log('hello');
+          _this2.genres1.push(response);
 
-          _this2.myData.push('hello');
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    },
+    onSubmitPublisher: function onSubmitPublisher() {
+      var _this3 = this;
+
+      console.log('done');
+      $('#publisherModal').modal('toggle');
+      $('#publisherButton').prop('disabled', true);
+      $(document).on("submit", 'form#publisher', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var formData = {
+          'name': $('input[name=name]').val(),
+          'street_address': $('input[name=streetAddress]').val(),
+          'city': $('input[name=city]').val(),
+          'district': $('input[name=district]').val(),
+          'phone_number': $('input[name=phoneNumber]').val()
+        };
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "publishers",
+          data: formData
+        }).done(function (response) {
+          _this3.publishers1.push(response);
 
           return false;
         });
@@ -2008,15 +2100,335 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AddMyBook",
+  props: ['csrf', 'authors', 'genres', 'publishers', 'books'],
+  data: function data() {
+    return {
+      isVisible: false,
+      books1: this.books
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditBook.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditBook.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AddMyBook",
-  props: ['csrf', 'old'],
+  name: "EditBook",
+  props: ['csrf', 'authors', 'genres', 'publishers', 'book', 'prevpublisher'],
   data: function data() {
     return {
-      isVisible: false
+      myData: [],
+      authors1: this.authors,
+      genres1: this.genres,
+      publishers1: this.publishers,
+      book1: this.book,
+      prevpublisher1: this.prevpublisher
     };
+  },
+  computed: {
+    computedAction: function computedAction() {
+      return "/userbooks/".concat(this.book1.id);
+    },
+    computedDelete: function computedDelete() {
+      return "/userbooks/".concat(this.book1.id);
+    }
+  },
+  methods: {
+    computedAction: function computedAction() {
+      return "/userbooks/".concat(this.book1.id);
+    },
+    onSubmitAuthor: function onSubmitAuthor() {
+      var _this = this;
+
+      console.log('done');
+      $('#authorModal').modal('toggle'); // $('#authorButton').prop('disabled', true);
+
+      $(document).on("submit", 'form#author', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var formData = {
+          'first_name': $('input[name=firstName]').val(),
+          'middle_name': $('input[name=middleName]').val(),
+          'last_name': $('input[name=lastName]').val()
+        };
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "../../authors",
+          data: formData
+        }).done(function (response) {
+          console.log(_typeof(response));
+          console.log(_typeof(_this.authors1));
+
+          _this.authors1.push(response);
+
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    },
+    onSubmitGenre: function onSubmitGenre() {
+      var _this2 = this;
+
+      console.log('done');
+      $('#genreModal').modal('toggle'); // $('#genreButton').prop('disabled', true);
+
+      $(document).on("submit", 'form#genre', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var formData = {
+          'title': $('input[name=genreTitle]').val(),
+          'description': $('textarea[name=genreDescription]').val()
+        };
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "../../genres",
+          data: formData
+        }).done(function (response) {
+          _this2.genres1.push(response);
+
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    },
+    onSubmitPublisher: function onSubmitPublisher() {
+      var _this3 = this;
+
+      console.log('done');
+      $('#publisherModal').modal('toggle');
+      $('#publisherButton').prop('disabled', true);
+      $(document).on("submit", 'form#publisher', function (e) {
+        // e.preventDefault(); //Prevent page from submitting
+        var formData = {
+          'name': $('input[name=name]').val(),
+          'street_address': $('input[name=streetAddress]').val(),
+          'city': $('input[name=city]').val(),
+          'district': $('input[name=district]').val(),
+          'phone_number': $('input[name=phoneNumber]').val()
+        };
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: "POST",
+          url: "../../publishers",
+          data: formData
+        }).done(function (response) {
+          _this3.publishers1.push(response);
+
+          return false;
+        });
+      });
+      return false; // console.log('hello');
+    }
   }
 });
 
@@ -37355,15 +37767,168 @@ var render = function() {
                 _vm._v("Author")
               ]),
               _vm._v(" "),
-              _vm._m(3),
-              _vm._v("\n            " + _vm._s(_vm.myData) + "\n        ")
+              _c(
+                "div",
+                {
+                  staticClass: "input-group mb-3",
+                  staticStyle: { "padding-top": "10px" }
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { name: "author", id: "InputAuthor" }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.authors1, function(author) {
+                        return _c(
+                          "option",
+                          { domProps: { value: author.id } },
+                          [
+                            _vm._v(
+                              _vm._s(author.first_name) +
+                                " " +
+                                _vm._s(author.middle_name) +
+                                " " +
+                                _vm._s(author.last_name)
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#authorModal"
+                  }
+                },
+                [_vm._v("Add\n                ")]
+              )
             ]),
             _vm._v(" "),
-            _vm._m(4),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "InputGenre" } }, [_vm._v("Genre")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "input-group mb-3",
+                  staticStyle: { "padding-top": "10px" }
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { name: "genre", id: "InputGenre" }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.genres1, function(genre) {
+                        return _c("option", { domProps: { value: genre.id } }, [
+                          _vm._v(_vm._s(genre.title))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#genreModal"
+                  }
+                },
+                [_vm._v("Add\n            ")]
+              )
+            ]),
             _vm._v(" "),
-            _vm._m(5),
+            _vm._m(3),
             _vm._v(" "),
-            _vm._m(6),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "InputPublisher" } }, [
+                _vm._v("Publisher")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "input-group mb-3",
+                  staticStyle: { "padding-top": "10px" }
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { name: "publisher_id", id: "InputPublisher" }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.publishers1, function(publisher) {
+                        return _c(
+                          "option",
+                          { domProps: { value: publisher.id } },
+                          [
+                            _vm._v(
+                              _vm._s(publisher.name) +
+                                ", " +
+                                _vm._s(publisher.street_address) +
+                                ", " +
+                                _vm._s(publisher.city) +
+                                ", " +
+                                _vm._s(publisher.district) +
+                                ", " +
+                                _vm._s(publisher.phone_number)
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#publisherModal"
+                  }
+                },
+                [_vm._v("Add\n            ")]
+              )
+            ]),
             _vm._v(" "),
             _c(
               "button",
@@ -37408,14 +37973,14 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(7),
+              _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
                   "form",
                   {
                     ref: "form",
-                    attrs: { id: "author" },
+                    attrs: { id: "author", name: "authorForm" },
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
@@ -37424,16 +37989,11 @@ var render = function() {
                     }
                   },
                   [
-                    _c("input", {
-                      attrs: { type: "hidden", name: "_token" },
-                      domProps: { value: _vm.csrf }
-                    }),
+                    _vm._m(5),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(6),
                     _vm._v(" "),
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _vm._m(10),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "button",
@@ -37482,7 +38042,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(11),
+              _vm._m(8),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -37498,20 +38058,88 @@ var render = function() {
                     }
                   },
                   [
-                    _c("input", {
-                      attrs: { type: "hidden", name: "_token" },
-                      domProps: { value: _vm.csrf }
-                    }),
+                    _vm._m(9),
                     _vm._v(" "),
-                    _vm._m(12),
-                    _vm._v(" "),
-                    _vm._m(13),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
                         staticClass: "btn btn-primary",
                         attrs: { type: "submit", id: "genreButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "publisherModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "publisherModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(11),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "publisher" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitPublisher($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _vm._m(14),
+                    _vm._v(" "),
+                    _vm._m(15),
+                    _vm._v(" "),
+                    _vm._m(16),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "publisherButton" }
                       },
                       [_vm._v("Submit")]
                     ),
@@ -37583,81 +38211,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { name: "author", id: "InputAuthor", placeholder: "Author" }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#authorModal"
-          }
-        },
-        [_vm._v("Add\n                ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "InputGenre" } }, [_vm._v("Genre")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { name: "genre", id: "InputGenre", placeholder: "Genre" }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#genreModal"
-          }
-        },
-        [_vm._v("Add\n            ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "InputPrice" } }, [_vm._v("Price")]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
         attrs: { name: "price", id: "InputPrice", placeholder: "Price" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "InputPublisher_id" } }, [
-        _vm._v("Publisher ID")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          name: "publisher_id",
-          id: "InputPublisher_id",
-          placeholder: "Publisher ID"
-        }
       })
     ])
   },
@@ -37798,6 +38357,112 @@ var staticRenderFns = [
           name: "genreDescription",
           id: "InputGenreDescription",
           placeholder: "Enter Genre Description"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "publisherModalLabel" } },
+        [_vm._v("Add Publisher")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputName" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "name", id: "InputName", placeholder: "Enter Name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputStreetAddress" } }, [
+        _vm._v("Street Address")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "streetAddress",
+          id: "InputStreetAddress",
+          placeholder: "Enter Street Address"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputCity" } }, [_vm._v("City")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "city", id: "InputCity", placeholder: "Enter City" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputDistrict" } }, [_vm._v("District")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "district",
+          id: "InputDistrict",
+          placeholder: "Enter District"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputPhoneNumber" } }, [
+        _vm._v("Phone Number")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "phoneNumber",
+          id: "InputPhoneNumber",
+          placeholder: "Enter Phone Number"
         }
       })
     ])
@@ -37964,7 +38629,34 @@ var render = function() {
                 domProps: { value: _vm.csrf }
               }),
               _vm._v(" "),
-              _vm._m(0),
+              _c(
+                "div",
+                {
+                  staticClass: "input-group mb-3",
+                  staticStyle: { "padding-top": "10px" }
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "custom-select",
+                      attrs: { id: "inputGroupSelect01" }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.books1, function(book) {
+                        return _c("option", [
+                          _vm._v(_vm._s(book.isbn) + " " + _vm._s(book.title))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "button",
@@ -37990,7 +38682,9 @@ var render = function() {
               attrs: {
                 condition: "If the book is not listed above",
                 csrf: _vm.csrf,
-                old: _vm.old
+                authors: _vm.authors,
+                genres: _vm.genres,
+                publishers: _vm.publishers
               }
             })
           ],
@@ -37999,33 +38693,789 @@ var render = function() {
       : _vm._e()
   ])
 }
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "form",
+      { attrs: { id: "mainForm", action: _vm.computedAction, method: "post" } },
+      [
+        _c("input", {
+          attrs: { type: "hidden", name: "_method", value: "PUT" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputISBN" } }, [_vm._v("ISBN")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "isbn",
+              id: "InputISBN",
+              "aria-describedby": "isbnHelp",
+              placeholder: "Enter ISBN"
+            },
+            domProps: { value: _vm.book1.isbn }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputTitle" } }, [_vm._v("Title")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { name: "title", id: "InputTitle", placeholder: "Title" },
+            domProps: { value: _vm.book1.title }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputEdition" } }, [_vm._v("Edition")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "edition",
+              id: "InputEdition",
+              placeholder: "Edition"
+            },
+            domProps: { value: _vm.book1.edition }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputAuthor" } }, [_vm._v("Author")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "input-group mb-3",
+              staticStyle: { "padding-top": "10px" }
+            },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { name: "author", id: "InputAuthor" }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: { selected: "" },
+                      domProps: { value: _vm.book1.author.id }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.book1.author.first_name) +
+                          "\n                        " +
+                          _vm._s(_vm.book1.author.middle_name) +
+                          " " +
+                          _vm._s(_vm.book1.author.last_name)
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.authors1, function(author) {
+                    return _c("option", { domProps: { value: author.id } }, [
+                      _vm._v(
+                        _vm._s(author.first_name) +
+                          "\n                        " +
+                          _vm._s(author.middle_name) +
+                          " " +
+                          _vm._s(author.last_name) +
+                          "\n                    "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#authorModal"
+              }
+            },
+            [_vm._v("Add\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputGenre" } }, [_vm._v("Genre")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "input-group mb-3",
+              staticStyle: { "padding-top": "10px" }
+            },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { name: "genre", id: "InputGenre" }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: { selected: "" },
+                      domProps: { value: _vm.book1.genre.id }
+                    },
+                    [_vm._v(_vm._s(_vm.book1.genre.title))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.genres1, function(genre) {
+                    return _c("option", { domProps: { value: genre.id } }, [
+                      _vm._v(_vm._s(genre.title))
+                    ])
+                  })
+                ],
+                2
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#genreModal"
+              }
+            },
+            [_vm._v("Add\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputPrice" } }, [_vm._v("Price")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { name: "price", id: "InputPrice", placeholder: "Price" },
+            domProps: { value: _vm.book1.price }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "InputPublisher" } }, [
+            _vm._v("Publisher")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "input-group mb-3",
+              staticStyle: { "padding-top": "10px" }
+            },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { name: "publisher_id", id: "InputPublisher" }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: { selected: "" },
+                      domProps: { value: _vm.prevpublisher1.id }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.prevpublisher1.name) +
+                          ",\n                        " +
+                          _vm._s(_vm.prevpublisher1.street_address) +
+                          ", " +
+                          _vm._s(_vm.prevpublisher1.city) +
+                          ", " +
+                          _vm._s(_vm.prevpublisher1.district) +
+                          ", " +
+                          _vm._s(_vm.prevpublisher1.phone_number)
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.publishers1, function(publisher) {
+                    return _c("option", { domProps: { value: publisher.id } }, [
+                      _vm._v(
+                        _vm._s(publisher.name) +
+                          ",\n                        " +
+                          _vm._s(publisher.street_address) +
+                          ", " +
+                          _vm._s(publisher.city) +
+                          ", " +
+                          _vm._s(publisher.district) +
+                          ", " +
+                          _vm._s(publisher.phone_number) +
+                          "\n                    "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#publisherModal"
+              }
+            },
+            [_vm._v("Add\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Add")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            on: {
+              click: function($event) {
+                _vm.isVisible = false
+              }
+            }
+          },
+          [_vm._v("Cancel")]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "authorModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "authorModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "author", name: "authorForm" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitAuthor($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "authorButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "genreModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "genreModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "genre" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitGenre($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "genreButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "publisherModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "publisherModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    ref: "form",
+                    attrs: { id: "publisher" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitPublisher($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", id: "publisherButton" }
+                      },
+                      [_vm._v("Submit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("form", { attrs: { method: "POST", action: _vm.computedDelete } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_method", value: "DELETE" }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _vm._m(13)
+    ])
+  ])
+}
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group mb-3",
-        staticStyle: { "padding-top": "10px" }
-      },
-      [
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "authorModalLabel" } },
+        [_vm._v("Add Author")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputFirstName" } }, [_vm._v("First Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "firstName",
+          id: "InputFirstName",
+          placeholder: "Enter First Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputMiddleName" } }, [
+        _vm._v("Middle Name")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "middleName",
+          id: "InputMiddleName",
+          placeholder: "Enter Middle Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputLastName" } }, [_vm._v("Last Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "lastName",
+          id: "InputLastName",
+          placeholder: "Enter Last Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "genreModalLabel" } },
+        [_vm._v("Add Genre")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputGenreTitle" } }, [
+        _vm._v("Genre Title")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "genreTitle",
+          id: "InputGenreTitle",
+          placeholder: "Enter Genre Title"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputGenreDescription" } }, [
+        _vm._v("Genre Description")
+      ]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name: "genreDescription",
+          id: "InputGenreDescription",
+          placeholder: "Enter Genre Description"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "publisherModalLabel" } },
+        [_vm._v("Add Publisher")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputName" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "name", id: "InputName", placeholder: "Enter Name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputStreetAddress" } }, [
+        _vm._v("Street Address")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "streetAddress",
+          id: "InputStreetAddress",
+          placeholder: "Enter Street Address"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputCity" } }, [_vm._v("City")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "city", id: "InputCity", placeholder: "Enter City" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputDistrict" } }, [_vm._v("District")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "district",
+          id: "InputDistrict",
+          placeholder: "Enter District"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "InputPhoneNumber" } }, [
+        _vm._v("Phone Number")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "phoneNumber",
+          id: "InputPhoneNumber",
+          placeholder: "Enter Phone Number"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "field" }, [
+      _c("div", { staticClass: "control" }, [
         _c(
-          "select",
-          { staticClass: "custom-select", attrs: { id: "inputGroupSelect01" } },
-          [
-            _c("option", { attrs: { selected: "" } }, [_vm._v("Choose...")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("One")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Two")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Three")])
-          ]
+          "button",
+          { staticClass: "btn btn-secondary", attrs: { type: "submit" } },
+          [_vm._v("Delete Project")]
         )
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -50205,6 +51655,7 @@ var map = {
 	"./components/AddBook.vue": "./resources/js/components/AddBook.vue",
 	"./components/AddComponent.vue": "./resources/js/components/AddComponent.vue",
 	"./components/AddMyBook.vue": "./resources/js/components/AddMyBook.vue",
+	"./components/EditBook.vue": "./resources/js/components/EditBook.vue",
 	"./components/FormComponent.vue": "./resources/js/components/FormComponent.vue"
 };
 
@@ -50536,6 +51987,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddMyBook_vue_vue_type_template_id_7c3de44a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddMyBook_vue_vue_type_template_id_7c3de44a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EditBook.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/EditBook.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditBook.vue?vue&type=template&id=2913dbfe&scoped=true& */ "./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true&");
+/* harmony import */ var _EditBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditBook.vue?vue&type=script&lang=js& */ "./resources/js/components/EditBook.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2913dbfe",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditBook.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditBook.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/EditBook.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditBook.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditBook.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditBook.vue?vue&type=template&id=2913dbfe&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditBook.vue?vue&type=template&id=2913dbfe&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditBook_vue_vue_type_template_id_2913dbfe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

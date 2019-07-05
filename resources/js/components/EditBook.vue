@@ -1,40 +1,40 @@
 <template>
     <div>
-        {{ condition }}
-        <button type="button" class="btn btn-primary" @click="isVisible = true">Add New Book</button>
-        <div style="padding-top: 10px">
-        </div>
-        <form id="mainForm" v-if="isVisible" action="/userbooks" method="post">
+        <form id="mainForm" :action="computedAction" method="post">
+            <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" :value="csrf">
             <div class="form-group">
                 <label for="InputISBN">ISBN</label>
                 <input name="isbn" class="form-control" id="InputISBN" aria-describedby="isbnHelp"
-                       placeholder="Enter ISBN">
+                       placeholder="Enter ISBN" v-bind:value="book1.isbn">
             </div>
             <div class="form-group">
                 <label for="InputTitle">Title</label>
-                <input name="title" class="form-control" id="InputTitle" placeholder="Title">
+                <input name="title" class="form-control" id="InputTitle" placeholder="Title" :value="book1.title">
             </div>
             <div class="form-group">
                 <label for="InputEdition">Edition</label>
-                <input name="edition" class="form-control" id="InputEdition" placeholder="Edition">
+                <input name="edition" class="form-control" id="InputEdition" placeholder="Edition" :value="book1.edition">
             </div>
             <div class="form-group">
                 <label for="InputAuthor">Author</label>
-                    <div class="input-group mb-3" style="padding-top: 10px">
-                        <select name="author" class="form-control" id="InputAuthor">
-                            <option selected>Choose...</option>
-                            <option v-for="author in authors1" :value="author.id">{{author.first_name}} {{author.middle_name}} {{author.last_name}}</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorModal">Add
-                    </button>
+                <div class="input-group mb-3" style="padding-top: 10px">
+                    <select name="author" class="form-control" id="InputAuthor">
+                        <option selected :value="book1.author.id">{{book1.author.first_name}}
+                            {{book1.author.middle_name}} {{book1.author.last_name}}</option>
+                        <option v-for="author in authors1" :value="author.id">{{author.first_name}}
+                            {{author.middle_name}} {{author.last_name}}
+                        </option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorModal">Add
+                </button>
             </div>
             <div class="form-group">
                 <label for="InputGenre">Genre</label>
                 <div class="input-group mb-3" style="padding-top: 10px">
                     <select name="genre" class="form-control" id="InputGenre">
-                        <option selected>Choose...</option>
+                        <option selected :value="book1.genre.id">{{book1.genre.title}}</option>
                         <option v-for="genre in genres1" :value="genre.id">{{genre.title}}</option>
                     </select>
                 </div>
@@ -43,14 +43,19 @@
             </div>
             <div class="form-group">
                 <label for="InputPrice">Price</label>
-                <input name="price" class="form-control" id="InputPrice" placeholder="Price">
+                <input name="price" class="form-control" id="InputPrice" placeholder="Price" :value="book1.price">
             </div>
             <div class="form-group">
                 <label for="InputPublisher">Publisher</label>
                 <div class="input-group mb-3" style="padding-top: 10px">
                     <select name="publisher_id" class="form-control" id="InputPublisher">
-                        <option selected>Choose...</option>
-                        <option v-for="publisher in publishers1" :value="publisher.id">{{publisher.name}}, {{publisher.street_address}}, {{ publisher.city }}, {{ publisher.district }}, {{ publisher.phone_number }}</option>
+                        <option selected :value="prevpublisher1.id">{{ prevpublisher1.name }},
+                            {{ prevpublisher1.street_address }}, {{ prevpublisher1.city }}, {{ prevpublisher1.district }}, {{
+                            prevpublisher1.phone_number }}</option>
+                        <option v-for="publisher in publishers1" :value="publisher.id">{{ publisher.name }},
+                            {{ publisher.street_address }}, {{ publisher.city }}, {{ publisher.district }}, {{
+                            publisher.phone_number }}
+                        </option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publisherModal">Add
@@ -166,24 +171,45 @@
                 </div>
             </div>
         </div>
+        <form method="POST" :action="computedDelete">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" :value="csrf">
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="btn btn-secondary">Delete Project</button>
+                </div>
+            </div>
+
+        </form>
     </div>
 </template>
 
-
 <script>
     export default {
-        name: "AddComponent",
-        props: ['csrf', 'condition', 'old', 'authors', 'genres', 'publishers'],
+        name: "EditBook",
+        props: ['csrf', 'authors', 'genres', 'publishers', 'book', 'prevpublisher'],
         data() {
             return {
-                isVisible: false,
                 myData: [],
                 authors1: this.authors,
                 genres1: this.genres,
                 publishers1: this.publishers,
+                book1: this.book,
+                prevpublisher1: this.prevpublisher,
+            }
+        },
+        computed:{
+            computedAction() {
+                return `/userbooks/${this.book1.id}`
+            },
+            computedDelete(){
+                return `/userbooks/${this.book1.id}`
             }
         },
         methods: {
+            computedAction() {
+                return `/userbooks/${this.book1.id}`
+            },
             onSubmitAuthor() {
                 console.log('done');
                 $('#authorModal').modal('toggle');
@@ -202,9 +228,11 @@
                     });
                     $.ajax({
                         type: "POST",
-                        url: "authors",
+                        url: "../../authors",
                         data: formData,
                     }).done((response) => {
+                        console.log(typeof response);
+                        console.log(typeof this.authors1);
                         this.authors1.push(response);
                         return false;
                     });
@@ -229,7 +257,7 @@
                     });
                     $.ajax({
                         type: "POST",
-                        url: "genres",
+                        url: "../../genres",
                         data: formData,
                     }).done((response) => {
                         this.genres1.push(response);
@@ -259,7 +287,7 @@
                     });
                     $.ajax({
                         type: "POST",
-                        url: "publishers",
+                        url: "../../publishers",
                         data: formData,
                     }).done((response) => {
                         this.publishers1.push(response);
@@ -269,10 +297,9 @@
                 return false;
                 // console.log('hello');
             },
-        }
+        },
     }
 </script>
-
 
 <style scoped>
 
