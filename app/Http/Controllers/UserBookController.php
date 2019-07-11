@@ -6,7 +6,6 @@ use App\Author;
 use App\Book;
 use App\Genre;
 use App\Publisher;
-use function foo\func;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,6 +81,7 @@ class UserBookController extends Controller
     public function show($id)
     {
         $book = Book::findOrfail($id);
+        $this->authorize('update', $book);
         return view('users.show', compact('book'));
     }
 
@@ -140,12 +140,11 @@ class UserBookController extends Controller
             'price' => 'required',
             'publisher_id'=>'required',
         ]);
-        $id = Auth::id();
         $attributes = \array_diff_key($attributes, ['genre'=>'xy', 'author'=>'xy']);
         $book = Book::findOrfail($id);
         $book->update($attributes);
-        $book->genres()->sync(\request()->only(['genre']), false);
-        $book->authors()->sync(\request()->only(['author']), false);
+        $book->genres()->sync(\request()->only(['genre']));
+        $book->authors()->sync(\request()->only(['author']));
         return redirect('/userbooks');
     }
 

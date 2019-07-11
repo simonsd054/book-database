@@ -21,14 +21,16 @@
             </div>
             <div class="form-group">
                 <label for="InputAuthor">Author</label>
-                    <div class="input-group mb-3" style="padding-top: 10px">
-                        <select name="author" class="form-control" id="InputAuthor">
-                            <option selected>Choose...</option>
-                            <option v-for="author in authors1" :value="author.id">{{author.first_name}} {{author.middle_name}} {{author.last_name}}</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorModal">Add
-                    </button>
+                <div class="input-group mb-3" style="padding-top: 10px">
+                    <select name="author" class="form-contro custom-select" id="InputAuthor">
+                        <option selected disabled>Choose...</option>
+                        <option v-for="author in authors1" :value="author.id">{{author.first_name}}
+                            {{author.middle_name}} {{author.last_name}}
+                        </option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorModal">Add
+                </button>
             </div>
             <div class="form-group">
                 <label for="InputGenre">Genre</label>
@@ -50,7 +52,10 @@
                 <div class="input-group mb-3" style="padding-top: 10px">
                     <select name="publisher_id" class="form-control" id="InputPublisher">
                         <option selected>Choose...</option>
-                        <option v-for="publisher in publishers1" :value="publisher.id">{{publisher.name}}, {{publisher.street_address}}, {{ publisher.city }}, {{ publisher.district }}, {{ publisher.phone_number }}</option>
+                        <option v-for="publisher in publishers1" :value="publisher.id">{{publisher.name}},
+                            {{publisher.street_address}}, {{ publisher.city }}, {{ publisher.district }}, {{
+                            publisher.phone_number }}
+                        </option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publisherModal">Add

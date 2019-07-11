@@ -6,9 +6,9 @@
             <form action="/userbooks" method="post">
                 <input type="hidden" name="_token" :value="csrf">
             <div class="input-group mb-3" style="padding-top: 10px">
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option v-for="book in books1">{{ book.isbn }} {{ book.title }}</option>
+                <select class="custom-select">
+                    <option selected disabled>Choose...</option>
+                    <option v-for="book in books1" :value="book.id">{{ book.isbn }} {{ book.title }}</option>
                 </select>
             </div>
                 <button type="submit" class="btn btn-primary">Add</button>

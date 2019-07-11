@@ -1891,6 +1891,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddComponent",
   props: ['csrf', 'condition', 'old', 'authors', 'genres', 'publishers'],
@@ -37777,11 +37782,11 @@ var render = function() {
                   _c(
                     "select",
                     {
-                      staticClass: "form-control",
+                      staticClass: "form-contro custom-select",
                       attrs: { name: "author", id: "InputAuthor" }
                     },
                     [
-                      _c("option", { attrs: { selected: "" } }, [
+                      _c("option", { attrs: { selected: "", disabled: "" } }, [
                         _vm._v("Choose...")
                       ]),
                       _vm._v(" "),
@@ -37792,10 +37797,11 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(author.first_name) +
-                                " " +
+                                "\n                        " +
                                 _vm._s(author.middle_name) +
                                 " " +
-                                _vm._s(author.last_name)
+                                _vm._s(author.last_name) +
+                                "\n                    "
                             )
                           ]
                         )
@@ -37816,7 +37822,7 @@ var render = function() {
                     "data-target": "#authorModal"
                   }
                 },
-                [_vm._v("Add\n                ")]
+                [_vm._v("Add\n            ")]
               )
             ]),
             _vm._v(" "),
@@ -37898,14 +37904,15 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(publisher.name) +
-                                ", " +
+                                ",\n                        " +
                                 _vm._s(publisher.street_address) +
                                 ", " +
                                 _vm._s(publisher.city) +
                                 ", " +
                                 _vm._s(publisher.district) +
                                 ", " +
-                                _vm._s(publisher.phone_number)
+                                _vm._s(publisher.phone_number) +
+                                "\n                    "
                             )
                           ]
                         )
@@ -38638,17 +38645,14 @@ var render = function() {
                 [
                   _c(
                     "select",
-                    {
-                      staticClass: "custom-select",
-                      attrs: { id: "inputGroupSelect01" }
-                    },
+                    { staticClass: "custom-select" },
                     [
-                      _c("option", { attrs: { selected: "" } }, [
+                      _c("option", { attrs: { selected: "", disabled: "" } }, [
                         _vm._v("Choose...")
                       ]),
                       _vm._v(" "),
                       _vm._l(_vm.books1, function(book) {
-                        return _c("option", [
+                        return _c("option", { domProps: { value: book.id } }, [
                           _vm._v(_vm._s(book.isbn) + " " + _vm._s(book.title))
                         ])
                       })
