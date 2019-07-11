@@ -54,7 +54,7 @@ class BookPolicy
     public function update(User $user, Book $book)
     {
 //        dd($book->users);
-        return $book->users[0]->id == $user->id;gita 
+        return $book->users[0]->id == $user->id;
     }
 
     /**
