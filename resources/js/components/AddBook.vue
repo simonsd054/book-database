@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="InputAuthor">Author</label>
                 <div class="input-group mb-3" style="padding-top: 10px">
-                    <select name="author" class="form-contro custom-select" id="InputAuthor">
+                    <select name="author" class="form-control custom-select" id="InputAuthor">
                         <option selected disabled>Choose...</option>
                         <option v-for="author in authors1" :value="author.id">{{author.first_name}}
                             {{author.middle_name}} {{author.last_name}}

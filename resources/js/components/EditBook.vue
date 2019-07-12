@@ -61,8 +61,8 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publisherModal">Add
                 </button>
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
-            <button class="btn btn-primary" @click="isVisible = false">Cancel</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button class="btn btn-primary" @click="cancel">Cancel</button>
         </form>
         <div class="modal fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="authorModalLabel"
              aria-hidden="true">
@@ -176,7 +176,7 @@
             <input type="hidden" name="_token" :value="csrf">
             <div class="field">
                 <div class="control">
-                    <button type="submit" class="btn btn-secondary">Delete Project</button>
+                    <button type="submit" class="btn btn-secondary">Delete Book</button>
                 </div>
             </div>
 
@@ -207,6 +207,10 @@
             }
         },
         methods: {
+            cancel() {
+              this.isVisible=false;
+              window.open(`/userbooks/${this.book1.id}`, '_self')
+            },
             computedAction() {
                 return `/userbooks/${this.book1.id}`
             },

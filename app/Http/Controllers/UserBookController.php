@@ -23,11 +23,12 @@ class UserBookController extends Controller
      */
     public function index()
     {
-        $books = auth()->user()->books;
+        $books = auth()->user()->books->sortBy('title');
         $allbooks = Book::all();
-        $authors = Author::all();
-        $genres = Genre::all();
-        $publishers = Publisher::all();
+        $allbooks = $allbooks->diff($books);
+        $authors = Author::orderBy('first_name')->get();
+        $genres = Genre::orderBy('title')->get();
+        $publishers = Publisher::orderBy('name')->get();
         return view('users.index', compact('books', 'authors', 'genres', 'publishers', 'allbooks'));
     }
 
@@ -72,6 +73,13 @@ class UserBookController extends Controller
         return redirect('/userbooks')->with(['books' => $books]);
     }
 
+    public function storeExisting(Request $request){
+        $id = $request->book;
+        $book = Book::findOrfail($id);
+        $book->users()->attach(Auth::id());
+        $books = auth()->user()->books;
+        return redirect('/userbooks')->with(['books' => $books]);
+    }
     /**
      * Display the specified resource.
      *
@@ -81,6 +89,8 @@ class UserBookController extends Controller
     public function show($id)
     {
         $book = Book::findOrfail($id);
+        $book->author = $book->authors[0];
+        $book->genre = $book->genres[0];
         $this->authorize('update', $book);
         return view('users.show', compact('book'));
     }
@@ -97,9 +107,9 @@ class UserBookController extends Controller
         $book = Book::findOrfail($id);
         $book->author = $book->authors[0];
         $book->genre = $book->genres[0];
-        $authors = Author::all();
-        $genres = Genre::all();
-        $publishers = Publisher::all();
+        $authors = Author::orderBy('first_name')->get();
+        $genres = Genre::orderBy('title')->get();
+        $publishers = Publisher::orderBy('name')->get();
         $akey = $authors->search(function($item) {
             global $book;
             return $item->id == $book->author->id;
@@ -145,7 +155,7 @@ class UserBookController extends Controller
         $book->update($attributes);
         $book->genres()->sync(\request()->only(['genre']));
         $book->authors()->sync(\request()->only(['author']));
-        return redirect('/userbooks');
+        return redirect(route('userbooks.show', $id));
     }
 
     /**
@@ -156,8 +166,7 @@ class UserBookController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::findOrfail($id);
-        $book->delete();
+        \DB::table('book_user')->where('book_id', $id)->delete();
         return redirect('/userbooks');
     }
 }

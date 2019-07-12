@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/userbooks/existing', 'UserBookController@storeExisting');
 Route::resource('userbooks', 'UserBookController');
 Route::resource('books', 'BookController');
 Route::resource('genres', 'GenreController');

@@ -2105,6 +2105,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddMyBook",
   props: ['csrf', 'authors', 'genres', 'publishers', 'books'],
@@ -2337,6 +2341,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }
   },
   methods: {
+    cancel: function cancel() {
+      this.isVisible = false;
+      window.open("/userbooks/".concat(this.book1.id), '_self');
+    },
     computedAction: function computedAction() {
       return "/userbooks/".concat(this.book1.id);
     },
@@ -37782,7 +37790,7 @@ var render = function() {
                   _c(
                     "select",
                     {
-                      staticClass: "form-contro custom-select",
+                      staticClass: "form-control custom-select",
                       attrs: { name: "author", id: "InputAuthor" }
                     },
                     [
@@ -38609,7 +38617,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _c(
       "button",
       {
@@ -38630,57 +38638,73 @@ var render = function() {
       ? _c(
           "div",
           [
-            _c("form", { attrs: { action: "/userbooks", method: "post" } }, [
-              _c("input", {
-                attrs: { type: "hidden", name: "_token" },
-                domProps: { value: _vm.csrf }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "input-group mb-3",
-                  staticStyle: { "padding-top": "10px" }
-                },
-                [
-                  _c(
-                    "select",
-                    { staticClass: "custom-select" },
-                    [
-                      _c("option", { attrs: { selected: "", disabled: "" } }, [
-                        _vm._v("Choose...")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.books1, function(book) {
-                        return _c("option", { domProps: { value: book.id } }, [
-                          _vm._v(_vm._s(book.isbn) + " " + _vm._s(book.title))
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                [_vm._v("Add")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.isVisible = false
+            _c(
+              "form",
+              { attrs: { action: "/userbooks/existing", method: "post" } },
+              [
+                _c("input", {
+                  attrs: { type: "hidden", name: "_token" },
+                  domProps: { value: _vm.csrf }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "input-group mb-3",
+                    staticStyle: { "padding-top": "10px" }
+                  },
+                  [
+                    _c(
+                      "select",
+                      { staticClass: "custom-select", attrs: { name: "book" } },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "" } },
+                          [_vm._v("Choose...")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.books1, function(book) {
+                          return _c(
+                            "option",
+                            { domProps: { value: book.id } },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(book.title) +
+                                  "\n                              " +
+                                  _vm._s(book.isbn) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Add")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        _vm.isVisible = false
+                      }
                     }
-                  }
-                },
-                [_vm._v("Cancel")]
-              )
-            ]),
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c("add-book", {
               attrs: {
@@ -38978,19 +39002,12 @@ var render = function() {
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Add")]
+          [_vm._v("Update")]
         ),
         _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "btn btn-primary",
-            on: {
-              click: function($event) {
-                _vm.isVisible = false
-              }
-            }
-          },
+          { staticClass: "btn btn-primary", on: { click: _vm.cancel } },
           [_vm._v("Cancel")]
         )
       ]
@@ -39476,7 +39493,7 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "btn btn-secondary", attrs: { type: "submit" } },
-          [_vm._v("Delete Project")]
+          [_vm._v("Delete Book")]
         )
       ])
     ])

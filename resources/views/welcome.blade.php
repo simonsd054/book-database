@@ -2,7 +2,17 @@
 
 @section('content')
     <div class="container">
-        Welcome to Book Database.<br>
-        Login to do something.
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3 class="text-center">
+            Welcome to Book Database.<br>
+            Login or register to start managing your books.
+        </h3>
     </div>
 @endsection
